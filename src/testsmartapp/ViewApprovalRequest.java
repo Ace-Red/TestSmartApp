@@ -37,7 +37,7 @@ public class ViewApprovalRequest extends JFrame implements ActionListener {
         }
         
         table = new JTable();
-        
+        table.setAutoCreateRowSorter(true);
         try {
             ConnectionDB c = new ConnectionDB();
             ResultSet rs = c.s.executeQuery("SELECT * FROM public.approvalrequest ORDER BY id");
