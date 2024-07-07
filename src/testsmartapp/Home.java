@@ -6,7 +6,6 @@ import java.awt.event.*;
 public class Home extends JFrame implements ActionListener{
     
     JButton listEmployees, listProjects, listLRequests, listARequests;
-    
     Home(){
         
         setLayout(null);

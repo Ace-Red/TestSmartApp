@@ -7,8 +7,8 @@ import testsmartapp.ConnectionDB;
 import testsmartapp.ViewEmployee;
 
 public class DetailLeaveRequest extends JFrame implements ActionListener{
-    
-    JButton back;
+    static String empid;
+    JButton back, approve, reject;
     String leaverid;
     DetailLeaveRequest(String leaverid) {
         this.leaverid = leaverid;
@@ -90,7 +90,6 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
         lblcomment.setFont(new Font("serif", Font.PLAIN, 20));
         add(lblcomment);
         
-        
          try {
             ConnectionDB c = new ConnectionDB();
             String query = "SELECT * FROM public.leaverequest where id = '"+leaverid+"'";
@@ -105,8 +104,9 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
                 lblenddate.setText(rs.getString("enddate"));
                 absid = rs.getString("absencereasonid");
                 lblcomment.setText(rs.getString("comment"));
-                lblstatus.setText(rs.getString("status"));
+                lblstatus.setText(rs.getString("status")); 
             }
+            this.empid = empid;
             String query2 = "SELECT * FROM public.employee where id = '"+empid+"'";
             ResultSet rs2 = c.s.executeQuery(query2);
             while(rs2.next()) {
@@ -121,12 +121,27 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
             e.printStackTrace();
         }
         
+        
         back = new JButton("Back");
-        back.setBounds(450, 550, 150, 40);
+        back.setBounds(550, 550, 150, 40);
         back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         add(back);
+        
+        approve = new JButton("Approve");
+        approve.setBounds(50, 550, 150, 40);
+        approve.addActionListener(this);
+        approve.setBackground(Color.BLACK);
+        approve.setForeground(Color.WHITE);
+        add(approve);
+        
+        reject = new JButton("Reject");
+        reject.setBounds(200, 550, 150, 40);
+        reject.addActionListener(this);
+        reject.setBackground(Color.BLACK);
+        reject.setForeground(Color.WHITE);
+        add(reject);
         
         setSize(900, 700);
         setLocation(300, 50);
@@ -134,8 +149,76 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == approve){
+            int pmcount = 0; //количество PM на всех проектах сотрудника, который написал реквест
+            try {
+                ConnectionDB c = new ConnectionDB();
+                String query = "SELECT COUNT(DISTINCT e.ID) AS ProjectManagerCount FROM Employee e JOIN EmployeeProject ep1 ON e.ID = ep1.EmployeeID JOIN Project p ON ep1.ProjectID = p.ID JOIN EmployeeProject ep2 ON p.ID = ep2.ProjectID JOIN Employee emp ON ep2.EmployeeID = emp.ID WHERE emp.ID = '"+DetailLeaveRequest.empid+"' AND e.PositionID = (SELECT ID FROM Position WHERE Name = 'Project Manager');";
+                ResultSet rs = c.s.executeQuery(query);
+                while(rs.next()) {
+                     pmcount += Integer.parseInt(rs.getString("ProjectManagerCount"));
+                 }  
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            int appreqcount = 0; //количество одобрений
+            try {
+                ConnectionDB c = new ConnectionDB();
+                String query = "SELECT COUNT(*) AS ApprovalRequestCount FROM ApprovalRequest WHERE LeaveRequestID = '"+leaverid+"';";
+                ResultSet rs = c.s.executeQuery(query);
+                while(rs.next()) {
+                     appreqcount += Integer.parseInt(rs.getString("ApprovalRequestCount"));
+                 }     
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            if (appreqcount<pmcount+1){
+                try {
+                    ConnectionDB conn = new ConnectionDB();
+                    String query = "INSERT INTO public.approvalrequest (approverid, leaverequestid, status, comment) VALUES ('"+Account.id+"', '"+leaverid+"', '"+true+"', '"+"Okey"+"')";
+                    conn.s.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null, "Approve successfully");
+                    setVisible(false);
+                    new ViewLeaveRequest();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
+            else{
+                try {
+                    ConnectionDB conn = new ConnectionDB();
+                    String query = "UPDATE public.leaverequest SET status = true WHERE id = '"+leaverid+"'";
+                    String query2 = "INSERT INTO public.approvalrequest (approverid, leaverequestid, status, comment) VALUES ('"+Account.id+"', '"+leaverid+"', '"+true+"', Okey)";
+                    conn.s.executeUpdate(query);
+                    conn.s.executeUpdate(query2);
+                    JOptionPane.showMessageDialog(null, "Approve successfully");
+                    setVisible(false);
+                    new ViewLeaveRequest();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
+        }
+        else if (ae.getSource() == reject){
+            try {
+                    ConnectionDB conn = new ConnectionDB();
+                    String query = "INSERT INTO public.approvalrequest (approverid, leaverequestid, status, comment) VALUES ('"+Account.id+"', '"+leaverid+"', '"+false+"', '"+"You must work"+"')";
+                    conn.s.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null, "Reject successfully");
+                    setVisible(false);
+                    new ViewLeaveRequest();
+            
+        } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        }
+        else {
             setVisible(false);
             new ViewLeaveRequest();
+        }
     }
 
     public static void main(String[] args) {

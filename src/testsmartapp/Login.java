@@ -49,6 +49,7 @@ public class Login extends JFrame implements ActionListener{
             String query = "SELECT * FROM public.employee WHERE FullName = '"+dbUserName+"' AND Password = '"+dbPassword+"'";
             ResultSet rs = c.s.executeQuery(query);
             if (rs.next()){
+                Account acc = new Account(rs.getString("id"));
                 setVisible(false);
                 new Home();
             }

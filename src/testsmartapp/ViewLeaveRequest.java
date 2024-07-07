@@ -10,9 +10,8 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
     JTable table;
     Choice leaverid;
     JButton search, back, detail;
-    
+    static String dbUserName;
     ViewLeaveRequest(){
-
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
@@ -26,7 +25,7 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
         
         try {
             ConnectionDB c = new ConnectionDB();
-            ResultSet rs = c.s.executeQuery("SELECT * FROM public.leaverequest ORDER BY id");
+            ResultSet rs = c.s.executeQuery("SELECT lr.* FROM LeaveRequest lr JOIN Employee e ON lr.EmployeeID = e.ID WHERE e.PeoplePartnerID = '"+Account.id+"' AND lr.Status = FALSE AND NOT EXISTS (SELECT 1 FROM approvalrequest ar WHERE ar.LeaveRequestID = lr.ID AND ar.Status = FALSE) AND NOT EXISTS (SELECT 1 FROM ApprovalRequest ar2 WHERE ar2.LeaveRequestID = lr.ID AND ar2.ApproverId = '"+Account.id+"');");
             while(rs.next()){
                 leaverid.add(rs.getString("id"));
             }
@@ -40,7 +39,7 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
         table.setAutoCreateRowSorter(true);
         try {
             ConnectionDB c = new ConnectionDB();
-            ResultSet rs = c.s.executeQuery("SELECT * FROM public.leaverequest ORDER BY id");
+            ResultSet rs = c.s.executeQuery("SELECT lr.* FROM LeaveRequest lr JOIN Employee e ON lr.EmployeeID = e.ID WHERE e.PeoplePartnerID = '"+Account.id+"' AND lr.Status = FALSE AND NOT EXISTS (SELECT 1 FROM approvalrequest ar WHERE ar.LeaveRequestID = lr.ID AND ar.Status = FALSE) AND NOT EXISTS (SELECT 1 FROM ApprovalRequest ar2 WHERE ar2.LeaveRequestID = lr.ID AND ar2.ApproverId = '"+Account.id+"');");
             table.setModel(DbUtils.resultSetToTableModel(rs));            
         }
         catch (Exception e){
@@ -77,8 +76,8 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
             String query = "SELECT * FROM public.leaverequest WHERE id = '" + leaverid.getSelectedItem()+"'";
             try{
                 ConnectionDB c = new ConnectionDB();
-                 ResultSet rs = c.s.executeQuery(query);
-                 table.setModel(DbUtils.resultSetToTableModel(rs));
+                ResultSet rs = c.s.executeQuery(query);
+                table.setModel(DbUtils.resultSetToTableModel(rs));
             }
             catch(Exception e){
                 e.printStackTrace();
