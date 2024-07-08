@@ -83,8 +83,8 @@ public class ViewLeaveRequestProjectManager extends JFrame implements ActionList
                 e.printStackTrace();
             }
         } else if(ae.getSource() == detail){
-            //setVisible(false);
-            //new DetailLeaveRequest(leaverid.getSelectedItem());
+            setVisible(false);
+            new DetailLeaveRequestProjectManager(leaverid.getSelectedItem());
         } else {
             setVisible(false);
             new HomeProjectManager();

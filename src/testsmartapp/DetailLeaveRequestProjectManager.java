@@ -9,11 +9,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class DetailLeaveRequest extends JFrame implements ActionListener{
+public class DetailLeaveRequestProjectManager extends JFrame implements ActionListener{
     static String empid;
     JButton back, approve, reject;
     String leaverid;
-    DetailLeaveRequest(String leaverid) {
+    DetailLeaveRequestProjectManager(String leaverid) {
         this.leaverid = leaverid;
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -184,7 +184,7 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
                     conn.s.executeUpdate(query);
                     JOptionPane.showMessageDialog(null, "Approve successfully");
                     setVisible(false);
-                    new ViewLeaveRequest();
+                    new ViewLeaveRequestProjectManager();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -217,14 +217,14 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
                     String query4 = "SELECT * FROM public.employee where id = '"+emplId+"'";
                     ResultSet rs2 = conn.s.executeQuery(query4);
                     while(rs2.next()) {
-                        curOutBalDays = rs2.getString("outofofficebalance");
+                        curOutBalDays = rs.getString("outofofficebalance");
                     }
                     int curOutDays = Integer.parseInt(curOutBalDays);
                     String query5 = "UPDATE public.employee SET outofofficebalance = '"+ (curOutDays + daysBetween) +"' WHERE id = '"+emplId+"'";
                     conn.s.executeUpdate(query5);
                     JOptionPane.showMessageDialog(null, "Approve successfully");
                     setVisible(false);
-                    new ViewLeaveRequest();
+                    new ViewLeaveRequestProjectManager();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -237,7 +237,7 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
                     conn.s.executeUpdate(query);
                     JOptionPane.showMessageDialog(null, "Reject successfully");
                     setVisible(false);
-                    new ViewLeaveRequest();
+                    new ViewLeaveRequestProjectManager();
             
         } catch (Exception e) {
                 e.printStackTrace();
@@ -246,11 +246,11 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
         }
         else {
             setVisible(false);
-            new ViewLeaveRequest();
+            new ViewLeaveRequestProjectManager();
         }
     }
 
     public static void main(String[] args) {
-        new DetailLeaveRequest("");
+        new DetailLeaveRequestProjectManager("");
     }
 }
