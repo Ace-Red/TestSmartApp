@@ -156,7 +156,7 @@ public class DetailLeaveRequestProjectManager extends JFrame implements ActionLi
             int pmcount = 0; //количество PM на всех проектах сотрудника, который написал реквест
             try {
                 ConnectionDB c = new ConnectionDB();
-                String query = "SELECT COUNT(DISTINCT e.ID) AS ProjectManagerCount FROM Employee e JOIN EmployeeProject ep1 ON e.ID = ep1.EmployeeID JOIN Project p ON ep1.ProjectID = p.ID JOIN EmployeeProject ep2 ON p.ID = ep2.ProjectID JOIN Employee emp ON ep2.EmployeeID = emp.ID WHERE emp.ID = '"+DetailLeaveRequest.empid+"' AND e.PositionID = (SELECT ID FROM Position WHERE Name = 'Project Manager');";
+                String query = "SELECT COUNT(DISTINCT e.ID) AS ProjectManagerCount FROM Employee e JOIN EmployeeProject ep1 ON e.ID = ep1.EmployeeID JOIN Project p ON ep1.ProjectID = p.ID JOIN EmployeeProject ep2 ON p.ID = ep2.ProjectID JOIN Employee emp ON ep2.EmployeeID = emp.ID WHERE emp.ID = '"+empid+"' AND e.PositionID = (SELECT ID FROM Position WHERE Name = 'Project Manager');";
                 ResultSet rs = c.s.executeQuery(query);
                 while(rs.next()) {
                      pmcount += Integer.parseInt(rs.getString("ProjectManagerCount"));
@@ -217,7 +217,7 @@ public class DetailLeaveRequestProjectManager extends JFrame implements ActionLi
                     String query4 = "SELECT * FROM public.employee where id = '"+emplId+"'";
                     ResultSet rs2 = conn.s.executeQuery(query4);
                     while(rs2.next()) {
-                        curOutBalDays = rs.getString("outofofficebalance");
+                        curOutBalDays = rs2.getString("outofofficebalance");
                     }
                     int curOutDays = Integer.parseInt(curOutBalDays);
                     String query5 = "UPDATE public.employee SET outofofficebalance = '"+ (curOutDays + daysBetween) +"' WHERE id = '"+emplId+"'";
