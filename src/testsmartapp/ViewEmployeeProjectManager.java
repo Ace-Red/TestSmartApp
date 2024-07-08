@@ -84,7 +84,8 @@ public class ViewEmployeeProjectManager extends JFrame implements ActionListener
                 e.printStackTrace();
             }
         } else if(ae.getSource() == detail){
-            
+            setVisible(false);
+            new DetailEmployeeProjectManager(fullNameEmp.getSelectedItem());
         }
         else {
             setVisible(false);
