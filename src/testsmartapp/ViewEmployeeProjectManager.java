@@ -8,8 +8,8 @@ import java.awt.event.*;
 public class ViewEmployeeProjectManager extends JFrame implements ActionListener {
     
     JTable table;
-    Choice fullNameEmp;
-    JButton search, back, detail;
+    Choice fullNameEmp, projectch;
+    JButton search, back, detail, setproject;
     
     ViewEmployeeProjectManager(){
 
@@ -61,6 +61,26 @@ public class ViewEmployeeProjectManager extends JFrame implements ActionListener
         detail.addActionListener(this);
         add(detail);
         
+        setproject = new JButton("Set Project");
+        setproject.setBounds(220, 70, 80,20);
+        setproject.addActionListener(this);
+        add(setproject);
+        
+        projectch = new Choice();
+        projectch.setBounds(300, 70, 80, 20);
+        add(projectch);
+        
+        try {
+            ConnectionDB c = new ConnectionDB();
+            ResultSet rs = c.s.executeQuery("SELECT p.* FROM Project p WHERE NOT EXISTS (SELECT 1 FROM EmployeeProject ep JOIN Employee e ON ep.employeeid = e.id WHERE ep.projectid = p.id AND e.fullname = '"+fullNameEmp.getSelectedItem()+"');");
+            while(rs.next()){
+                projectch.add(rs.getString("id"));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        
         back = new JButton("Back");
         back.setBounds(420, 70, 80,20);
         back.addActionListener(this);
@@ -83,9 +103,39 @@ public class ViewEmployeeProjectManager extends JFrame implements ActionListener
             catch(Exception e){
                 e.printStackTrace();
             }
+            projectch.removeAll();
+            try {
+            ConnectionDB c = new ConnectionDB();
+            ResultSet rs = c.s.executeQuery("SELECT p.* FROM Project p WHERE NOT EXISTS (SELECT 1 FROM EmployeeProject ep JOIN Employee e ON ep.employeeid = e.id WHERE ep.projectid = p.id AND e.fullname = '"+fullNameEmp.getSelectedItem()+"');");
+            while(rs.next()){
+                projectch.add(rs.getString("id"));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         } else if(ae.getSource() == detail){
             setVisible(false);
             new DetailEmployeeProjectManager(fullNameEmp.getSelectedItem());
+        }
+        else if(ae.getSource() == setproject){
+           String idEmp ="";
+            try {
+                ConnectionDB conn = new ConnectionDB();
+                String query2 = "SELECT * FROM public.employee WHERE FullName = '"+fullNameEmp.getSelectedItem()+"'";
+               
+                ResultSet rs = conn.s.executeQuery(query2);
+                if (rs.next()){
+                    idEmp = rs.getString("id");
+                }
+                String query = "INSERT INTO public.employeeproject (employeeid, projectid) VALUES ('"+idEmp+"', '"+projectch.getSelectedItem()+"')";
+                conn.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "Set Project Successfully");
+                setVisible(false);
+                new ViewEmployeeProjectManager();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else {
             setVisible(false);
