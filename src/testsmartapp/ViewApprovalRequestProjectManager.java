@@ -5,13 +5,13 @@ import java.sql.*;
 import net.proteanit.sql.DbUtils;
 import java.awt.event.*;
 
-public class ViewApprovalRequest extends JFrame implements ActionListener {
+public class ViewApprovalRequestProjectManager extends JFrame implements ActionListener {
     
     JTable table;
     Choice approvalrid;
     JButton search, back, detail;
     
-    ViewApprovalRequest(){
+    ViewApprovalRequestProjectManager(){
 
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -85,16 +85,16 @@ public class ViewApprovalRequest extends JFrame implements ActionListener {
             }
         } else if(ae.getSource() == detail){
             setVisible(false);
-            new DetailApprovalRequest(approvalrid.getSelectedItem());
+            new DetailApprovalRequestProjectManager(approvalrid.getSelectedItem());
         } else {
             setVisible(false);
-            new Home();
+            new HomeProjectManager();
         }
         
     }
     
     public static void main(String[] args) {
-        new ViewApprovalRequest();
+        new ViewApprovalRequestProjectManager();
     }
 }
 

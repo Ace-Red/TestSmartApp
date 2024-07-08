@@ -52,11 +52,11 @@ public class HomeProjectManager extends JFrame implements ActionListener {
         }
         else if (ae.getSource() == listLRequests){
             //setVisible(false);
-            //new ViewLeaveRequest();
+            //new ViewLeaveRequestProjectManager();
         }
         else {
-            //setVisible(false);
-            //new ViewApprovalRequest();
+            setVisible(false);
+            new ViewApprovalRequestProjectManager();
         }
         
     }
