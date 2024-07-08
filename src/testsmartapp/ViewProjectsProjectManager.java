@@ -9,7 +9,7 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
     
     JTable table;
     Choice projectid;
-    JButton search, back, detail;
+    JButton search, back, detail, deactive;
     
     ViewProjectsProjectManager(){
 
@@ -56,6 +56,11 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
         search.addActionListener(this);
         add(search);
         
+        deactive = new JButton("Deactive");
+        deactive.setBounds(220, 70, 80,20);
+        deactive.addActionListener(this);
+        add(deactive);
+        
         detail = new JButton("Detail");
         detail.setBounds(120, 70, 80,20);
         detail.addActionListener(this);
@@ -86,7 +91,22 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
         } else if(ae.getSource() == detail){
             setVisible(false);
             new DetailProjectProjectManager(projectid.getSelectedItem());
-        } else {
+        }
+        else if(ae.getSource() == deactive){
+            String query = "UPDATE public.project SET status = false WHERE id = '" + projectid.getSelectedItem()+"'";
+            String query2 = "SELECT * FROM public.project WHERE id = '" + projectid.getSelectedItem()+"'";
+            try{
+                ConnectionDB c = new ConnectionDB();
+                c.s.executeUpdate(query);
+                ResultSet rs = c.s.executeQuery(query2);
+                table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            
+        }
+        else {
             setVisible(false);
             new HomeProjectManager();
         }
