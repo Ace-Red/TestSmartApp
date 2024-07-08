@@ -50,8 +50,17 @@ public class Login extends JFrame implements ActionListener{
             ResultSet rs = c.s.executeQuery(query);
             if (rs.next()){
                 Account acc = new Account(rs.getString("id"));
-                setVisible(false);
-                new Home();
+                System.out.println(Account.id);
+                System.out.println(Account.positionid);
+                if(Account.positionid.equals("2")){
+                    setVisible(false);
+                    new Home();
+                }
+                else if (Account.positionid.equals("5")){
+                    setVisible(false);
+                    new HomeProjectManager();
+                }
+               
             }
             else{
                 JOptionPane.showMessageDialog(null, "Invalid Value");

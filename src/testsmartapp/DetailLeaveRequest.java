@@ -5,6 +5,9 @@ import java.awt.event.*;
 import java.sql.*;
 import testsmartapp.ConnectionDB;
 import testsmartapp.ViewEmployee;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class DetailLeaveRequest extends JFrame implements ActionListener{
     static String empid;
@@ -189,10 +192,36 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
             else{
                 try {
                     ConnectionDB conn = new ConnectionDB();
+                    String startDate = "";
+                    String endDate = "";
+                    String emplId = "";
+                    String curOutBalDays = "";
                     String query = "UPDATE public.leaverequest SET status = true WHERE id = '"+leaverid+"'";
                     String query2 = "INSERT INTO public.approvalrequest (approverid, leaverequestid, status, comment) VALUES ('"+Account.id+"', '"+leaverid+"', '"+true+"', Okey)";
+                    String query3 = "SELECT * FROM public.leaverequest where id = '"+leaverid+"'";
                     conn.s.executeUpdate(query);
                     conn.s.executeUpdate(query2);
+                    ResultSet rs = conn.s.executeQuery(query2);
+                    while(rs.next()) {
+                        startDate = rs.getString("startdate");
+                        endDate = rs.getString("enddate");
+                        emplId = rs.getString("employeeid");
+                    }
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                    LocalDate start = LocalDate.parse(startDate, formatter);
+                    LocalDate end = LocalDate.parse(endDate, formatter);
+
+                    long daysBetween = ChronoUnit.DAYS.between(start, end);
+                    
+                    String query4 = "SELECT * FROM public.employee where id = '"+emplId+"'";
+                    ResultSet rs2 = conn.s.executeQuery(query4);
+                    while(rs2.next()) {
+                        curOutBalDays = rs.getString("outofofficebalance");
+                    }
+                    int curOutDays = Integer.parseInt(curOutBalDays);
+                    String query5 = "UPDATE public.employee SET outofofficebalance = '"+ (curOutDays + daysBetween) +"' WHERE id = '"+emplId+"'";
+                    conn.s.executeUpdate(query5);
                     JOptionPane.showMessageDialog(null, "Approve successfully");
                     setVisible(false);
                     new ViewLeaveRequest();
