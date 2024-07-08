@@ -9,7 +9,7 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
     
     JTable table;
     Choice projectid;
-    JButton search, back, detail, deactive, update;
+    JButton search, back, detail, deactive, update, add;
     
     ViewProjectsProjectManager(){
 
@@ -66,6 +66,11 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
         update.addActionListener(this);
         add(update);
         
+        add = new JButton("Add");
+        add.setBounds(420, 70, 80,20);
+        add.addActionListener(this);
+        add(add);
+        
         detail = new JButton("Detail");
         detail.setBounds(120, 70, 80,20);
         detail.addActionListener(this);
@@ -112,6 +117,10 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
         } else if(ae.getSource() == update){
             setVisible(false);
             new UpdateProjectProjectManager(projectid.getSelectedItem());
+        } 
+        else if(ae.getSource() == add){
+            setVisible(false);
+            new AddProjectProjectManager();
         }
         else {
             setVisible(false);
