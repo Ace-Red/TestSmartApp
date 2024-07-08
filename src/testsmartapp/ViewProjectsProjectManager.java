@@ -85,7 +85,7 @@ public class ViewProjectsProjectManager extends JFrame implements ActionListener
             }
         } else if(ae.getSource() == detail){
             setVisible(false);
-            //new DetailProject(projectid.getSelectedItem());
+            new DetailProjectProjectManager(projectid.getSelectedItem());
         } else {
             setVisible(false);
             new HomeProjectManager();

@@ -47,8 +47,8 @@ public class HomeProjectManager extends JFrame implements ActionListener {
             new ViewEmployeeProjectManager();
         }
         else if (ae.getSource() == listProjects){
-            //setVisible(false);
-            //new ViewProjects();
+            setVisible(false);
+            new ViewProjectsProjectManager();
         }
         else if (ae.getSource() == listLRequests){
             //setVisible(false);
