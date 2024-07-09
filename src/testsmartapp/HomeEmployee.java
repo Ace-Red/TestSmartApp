@@ -47,8 +47,8 @@ public class HomeEmployee extends JFrame implements ActionListener{
             new ViewLeaveRequestEmployee();
         }
         else {
-            //setVisible(false);
-            //new ViewApprovalRequest();
+            setVisible(false);
+            new ViewApprovalRequestEmployee();
         }
         
     }
