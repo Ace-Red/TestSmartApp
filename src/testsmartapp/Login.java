@@ -60,6 +60,10 @@ public class Login extends JFrame implements ActionListener{
                     setVisible(false);
                     new HomeProjectManager();
                 }
+                else{
+                    setVisible(false);
+                    new HomeEmployee();
+                }
                
             }
             else{
