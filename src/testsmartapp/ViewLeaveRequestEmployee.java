@@ -68,7 +68,7 @@ public class ViewLeaveRequestEmployee extends JFrame implements ActionListener {
         add(detail);
         
         add = new JButton("Add");
-        add.setBounds(120, 70, 80,20);
+        add.setBounds(220, 70, 80,20);
         add.addActionListener(this);
         add(add);
         
@@ -98,8 +98,8 @@ public class ViewLeaveRequestEmployee extends JFrame implements ActionListener {
             setVisible(false);
             new DetailLeaveRequestEmployee(leaverid.getSelectedItem());
         } else if(ae.getSource() == add){
-            //setVisible(false);
-            //new DetailLeaveRequest(leaverid.getSelectedItem());
+            setVisible(false);
+            new AddLeaveRequestEmployee();
         } 
         else {
             setVisible(false);

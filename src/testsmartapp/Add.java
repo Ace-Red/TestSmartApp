@@ -125,7 +125,7 @@ public class Add extends JFrame implements ActionListener{
         textfphoto.setBounds(600, 350, 150, 30);
         add(textfphoto);
         
-        update = new JButton("Update");
+        update = new JButton("Add");
         update.setBounds(250, 550, 150, 40);
         update.addActionListener(this);
         update.setBackground(Color.BLACK);

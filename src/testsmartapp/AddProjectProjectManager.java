@@ -13,7 +13,7 @@ public class AddProjectProjectManager extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
-        JLabel heading = new JLabel("Update Project Detail");
+        JLabel heading = new JLabel("Add Project");
         heading.setBounds(320, 30, 500, 50);
         heading.setFont(new Font("SAN_SERIF", Font.BOLD, 25));
         add(heading);
