@@ -1,4 +1,3 @@
-
 package testsmartapp;
 
 import java.awt.Choice;
@@ -17,7 +16,7 @@ public class ViewLeaveRequestEmployee extends JFrame implements ActionListener {
     
     JTable table;
     Choice leaverid;
-    JButton search, back, detail, add;
+    JButton search, back, detail, add, update;
     ViewLeaveRequestEmployee(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -72,6 +71,11 @@ public class ViewLeaveRequestEmployee extends JFrame implements ActionListener {
         add.addActionListener(this);
         add(add);
         
+        update = new JButton("Update");
+        update.setBounds(320, 70, 80,20);
+        update.addActionListener(this);
+        add(update);
+        
         back = new JButton("Back");
         back.setBounds(420, 70, 80,20);
         back.addActionListener(this);
@@ -100,6 +104,10 @@ public class ViewLeaveRequestEmployee extends JFrame implements ActionListener {
         } else if(ae.getSource() == add){
             setVisible(false);
             new AddLeaveRequestEmployee();
+        } 
+        else if(ae.getSource() == update){
+            setVisible(false);
+            new UpdateLeaveRequestEmployee(leaverid.getSelectedItem());
         } 
         else {
             setVisible(false);
