@@ -12,30 +12,30 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 
-public class ViewApprovalRequestEmployee extends JFrame implements ActionListener {
+public class ViewProjectsEmployee extends JFrame implements ActionListener {
     
     JTable table;
-    Choice approvalrid;
+    Choice projectid;
     JButton search, back, detail;
     
-    ViewApprovalRequestEmployee(){
+    ViewProjectsEmployee(){
 
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
-        JLabel searchLabel = new JLabel("Search by Approval Request ID");
+        JLabel searchLabel = new JLabel("Search by Project ID");
         searchLabel.setBounds(20, 20, 250, 20);
         add(searchLabel);
         
-        approvalrid = new Choice();
-        approvalrid.setBounds(280, 20, 150, 20);
-        add(approvalrid);    
+        projectid = new Choice();
+        projectid.setBounds(280, 20, 150, 20);
+        add(projectid);    
         
         try {
             ConnectionDB c = new ConnectionDB();
-            ResultSet rs = c.s.executeQuery("SELECT ar.* FROM approvalrequest ar JOIN leaverequest lr ON ar.leaverequestid = lr.id WHERE lr.employeeid = '"+Account.id+"';");
+            ResultSet rs = c.s.executeQuery("SELECT p.* FROM project p JOIN employeeproject ep ON p.id = ep.projectid WHERE ep.employeeid = '"+Account.id+"';");
             while(rs.next()){
-                approvalrid.add(rs.getString("id"));
+                projectid.add(rs.getString("id"));
             }
             
         }
@@ -47,7 +47,7 @@ public class ViewApprovalRequestEmployee extends JFrame implements ActionListene
         table.setAutoCreateRowSorter(true);
         try {
             ConnectionDB c = new ConnectionDB();
-            ResultSet rs = c.s.executeQuery("SELECT ar.* FROM approvalrequest ar JOIN leaverequest lr ON ar.leaverequestid = lr.id WHERE lr.employeeid = '"+Account.id+"';");
+            ResultSet rs = c.s.executeQuery("SELECT p.* FROM project p JOIN employeeproject ep ON p.id = ep.projectid WHERE ep.employeeid = '"+Account.id+"';");
             table.setModel(DbUtils.resultSetToTableModel(rs));            
         }
         catch (Exception e){
@@ -81,7 +81,7 @@ public class ViewApprovalRequestEmployee extends JFrame implements ActionListene
     public void actionPerformed(ActionEvent ae){
         
         if(ae.getSource() == search){
-            String query = "SELECT * FROM public.approvalrequest WHERE id = '" + approvalrid.getSelectedItem()+"'";
+            String query = "SELECT * FROM public.project WHERE id = '" + projectid.getSelectedItem()+"'";
             try{
                 ConnectionDB c = new ConnectionDB();
                  ResultSet rs = c.s.executeQuery(query);
@@ -92,7 +92,7 @@ public class ViewApprovalRequestEmployee extends JFrame implements ActionListene
             }
         } else if(ae.getSource() == detail){
             setVisible(false);
-            new DetailApprovalRequestEmployee(approvalrid.getSelectedItem());
+            new DetailProjectEmployee(projectid.getSelectedItem());
         } else {
             setVisible(false);
             new HomeEmployee();
@@ -101,7 +101,6 @@ public class ViewApprovalRequestEmployee extends JFrame implements ActionListene
     }
     
     public static void main(String[] args) {
-        new ViewApprovalRequest();
+        new ViewProjectsEmployee();
     }
 }
-

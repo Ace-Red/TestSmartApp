@@ -39,8 +39,8 @@ public class HomeEmployee extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         
         if (ae.getSource() == listProjects){
-            //setVisible(false);
-            //new ViewProjects();
+            setVisible(false);
+            new ViewProjectsEmployee();
         }
         else if (ae.getSource() == listLRequests){
             setVisible(false);
