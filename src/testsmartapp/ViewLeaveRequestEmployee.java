@@ -1,16 +1,24 @@
-package testsmartapp;
-import java.awt.*;
-import javax.swing.*;
-import java.sql.*;
-import net.proteanit.sql.DbUtils;
-import java.awt.event.*;
 
-public class ViewLeaveRequest extends JFrame implements ActionListener {
+package testsmartapp;
+
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
+
+public class ViewLeaveRequestEmployee extends JFrame implements ActionListener {
     
     JTable table;
     Choice leaverid;
-    JButton search, back, detail;
-    ViewLeaveRequest(){
+    JButton search, back, detail, add;
+    ViewLeaveRequestEmployee(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
@@ -24,7 +32,7 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
         
         try {
             ConnectionDB c = new ConnectionDB();
-            ResultSet rs = c.s.executeQuery("SELECT lr.* FROM LeaveRequest lr JOIN Employee e ON lr.EmployeeID = e.ID WHERE e.PeoplePartnerID = '"+Account.id+"' AND lr.Status = FALSE AND NOT EXISTS (SELECT 1 FROM approvalrequest ar WHERE ar.LeaveRequestID = lr.ID AND ar.Status = FALSE) AND NOT EXISTS (SELECT 1 FROM ApprovalRequest ar2 WHERE ar2.LeaveRequestID = lr.ID AND ar2.ApproverId = '"+Account.id+"');");
+            ResultSet rs = c.s.executeQuery("SELECT * FROM public.leaverequest WHERE employeeid = '" + Account.id+"'");
             while(rs.next()){
                 leaverid.add(rs.getString("id"));
             }
@@ -38,7 +46,7 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
         table.setAutoCreateRowSorter(true);
         try {
             ConnectionDB c = new ConnectionDB();
-            ResultSet rs = c.s.executeQuery("SELECT lr.* FROM LeaveRequest lr JOIN Employee e ON lr.EmployeeID = e.ID WHERE e.PeoplePartnerID = '"+Account.id+"' AND lr.Status = FALSE AND NOT EXISTS (SELECT 1 FROM approvalrequest ar WHERE ar.LeaveRequestID = lr.ID AND ar.Status = FALSE) AND NOT EXISTS (SELECT 1 FROM ApprovalRequest ar2 WHERE ar2.LeaveRequestID = lr.ID AND ar2.ApproverId = '"+Account.id+"');");
+            ResultSet rs = c.s.executeQuery("SELECT * FROM public.leaverequest WHERE employeeid = '" + Account.id+"'");
             table.setModel(DbUtils.resultSetToTableModel(rs));            
         }
         catch (Exception e){
@@ -58,6 +66,11 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
         detail.setBounds(120, 70, 80,20);
         detail.addActionListener(this);
         add(detail);
+        
+        add = new JButton("Add");
+        add.setBounds(120, 70, 80,20);
+        add.addActionListener(this);
+        add(add);
         
         back = new JButton("Back");
         back.setBounds(420, 70, 80,20);
@@ -83,15 +96,19 @@ public class ViewLeaveRequest extends JFrame implements ActionListener {
             }
         } else if(ae.getSource() == detail){
             setVisible(false);
-            new DetailLeaveRequest(leaverid.getSelectedItem());
-        } else {
+            new DetailLeaveRequestEmployee(leaverid.getSelectedItem());
+        } else if(ae.getSource() == add){
+            //setVisible(false);
+            //new DetailLeaveRequest(leaverid.getSelectedItem());
+        } 
+        else {
             setVisible(false);
-            new Home();
+            new HomeEmployee();
         }
         
     }
     
     public static void main(String[] args) {
-        new ViewLeaveRequest();
+        new ViewLeaveRequestEmployee();
     }
 }

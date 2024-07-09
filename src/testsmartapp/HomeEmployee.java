@@ -43,8 +43,8 @@ public class HomeEmployee extends JFrame implements ActionListener{
             //new ViewProjects();
         }
         else if (ae.getSource() == listLRequests){
-            //setVisible(false);
-            //new ViewLeaveRequest();
+            setVisible(false);
+            new ViewLeaveRequestEmployee();
         }
         else {
             //setVisible(false);
