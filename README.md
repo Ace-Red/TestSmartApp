@@ -26,7 +26,7 @@ Database:
    
 2) Створюємо таблиці за допомогою запитів:
    
-   -- Create Subdivision table
+-- Create Subdivision table
 CREATE TABLE Subdivision (
     ID SERIAL PRIMARY KEY,
     Name TEXT NOT NULL UNIQUE
