@@ -19,6 +19,7 @@ Links:
 - PgAndmin 4 & Postgresql https://www.postgresql.org/download/
 
 - rs2xml.jar https://sourceforge.net/projects/finalangelsanddemons/files/rs2xml.jar/download
+  
 Database: 
 
 1) Створюємо БД з назвою "test_db"
