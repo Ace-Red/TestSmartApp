@@ -177,3 +177,41 @@ CREATE TABLE EmployeeProject (
 <img width="1112" alt="Leave r PM" src="https://github.com/user-attachments/assets/cdec42c6-916c-45a6-a71e-7c843cc4206f">
 
 - (Дивитися розділ "HR" там є доступні записи та показаний увесь функціонал)
+
+**Employee**
+
+1) Home Page:
+
+<img width="1312" alt="Home page" src="https://github.com/user-attachments/assets/b4ecc87a-4a85-4c93-bbc7-18bc694a0676">
+
+- Співробитник обирає, що саме він хоче обрати та натискає відповідну кнопку
+
+2) Список проектів над якими він працює:
+
+<img width="1112" alt="Proj List" src="https://github.com/user-attachments/assets/2bf41b24-dd3d-4f53-bf47-eb52b365033b">
+
+- Співробитник може переглянути усі записи або переглянути детальну інформацію про обраний
+
+<img width="1012" alt="Detail Proj" src="https://github.com/user-attachments/assets/3f885391-a162-44d8-96ea-286e7a7009b2">
+
+3) Список leave requests:
+
+<img width="1112" alt="List leav r" src="https://github.com/user-attachments/assets/3ce75001-9e17-4c48-88fe-9613b5c98ea9">
+
+- Співробитник може переглянути усі записи, переглянути детальну інформацію про обраний, оновити інформацію або ж створити новий
+
+<img width="1012" alt="Detail leave r" src="https://github.com/user-attachments/assets/2a094579-834b-4550-ad6a-0aaa795f596d">
+
+<img width="1012" alt="Update Leav r" src="https://github.com/user-attachments/assets/bb06a9b2-a1a0-42e6-8ed6-2177f3cdc742">
+
+<img width="1012" alt="Add leave r" src="https://github.com/user-attachments/assets/5198dc3e-dde5-4d9d-abb0-d6a4910af547">
+
+4) Список approval requests:
+
+<img width="1112" alt="List apr r" src="https://github.com/user-attachments/assets/766e8888-dd07-44bc-b783-1918e5d0b0b4">
+
+- Співробитник може переглянути усі записи, переглянути детальну інформацію про обраний
+
+<img width="1012" alt="Detail app r" src="https://github.com/user-attachments/assets/f4469699-10d8-4d76-8f4e-a95644057546">
+
+
