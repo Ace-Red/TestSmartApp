@@ -214,4 +214,44 @@ CREATE TABLE EmployeeProject (
 
 <img width="1012" alt="Detail app r" src="https://github.com/user-attachments/assets/f4469699-10d8-4d76-8f4e-a95644057546">
 
+**HR**
 
+1) Home Page:
+
+<img width="1312" alt="Home" src="https://github.com/user-attachments/assets/19720c71-0c65-4927-843a-7943155e5a86">
+
+- HR обирає, що саме він хоче обрати та натискає відповідну кнопку
+
+2) Список працівників:
+
+<img width="1112" alt="Employee list hr" src="https://github.com/user-attachments/assets/efbad7f6-d207-4f16-8a0b-a86e36c2e12a">
+
+- HR може переглянути детальну інформацію, деактивувати працівника, оновити або додати нового працівника
+
+<img width="1012" alt="Update emp HR" src="https://github.com/user-attachments/assets/f297fc99-85e9-40c4-a8ef-b71b5567505e">
+
+<img width="1012" alt="Add emp hr" src="https://github.com/user-attachments/assets/424c1b0b-6578-4e43-97a2-8cdea8738f7c">
+
+2) Список проектів:
+
+<img width="1112" alt="List project HR" src="https://github.com/user-attachments/assets/f346c791-7d23-470f-ae70-76176acea84e">
+
+- HR може переглянути усі проекти або ж детальну інформацію про обраний
+
+<img width="1012" alt="Project Detail HR" src="https://github.com/user-attachments/assets/a91b4725-eca4-4835-a3ba-e3501c99dbfe">
+
+3) Список leave requests:
+
+<img width="1112" alt="List Leave r" src="https://github.com/user-attachments/assets/d6bc3ea0-3fe3-4411-b820-ceb6c39503ec">
+
+- HR може переглянути усі заявки або ж обрану та погодити/не погодити обрану
+
+<img width="1012" alt="Detail leav r" src="https://github.com/user-attachments/assets/00286781-0777-488c-bb64-338f30e3f2a4">
+
+4) Список approval requests:
+
+<img width="1112" alt="List App r HR" src="https://github.com/user-attachments/assets/f0b90734-4194-46b0-90e9-f7ddff97a35c">
+
+- HR може переглянути усі погоджені ним заявки, працівників за яких він відповідає
+
+<img width="1012" alt="Detail app r hr" src="https://github.com/user-attachments/assets/ece07fc3-bcf0-4f11-81bb-9efa9d047b3b">
