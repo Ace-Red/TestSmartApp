@@ -31,6 +31,8 @@ public class Login extends JFrame implements ActionListener{
         login.setBounds(150, 140, 150, 30);
         login.setBackground(Color.BLACK);
         login.setForeground(Color.WHITE);
+        login.setOpaque(true);
+        login.setBorderPainted(false);
         login.addActionListener(this);
         add(login);
         
