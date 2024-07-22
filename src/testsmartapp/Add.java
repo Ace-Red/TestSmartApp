@@ -130,6 +130,8 @@ public class Add extends JFrame implements ActionListener{
         update.addActionListener(this);
         update.setBackground(Color.BLACK);
         update.setForeground(Color.WHITE);
+        update.setOpaque(true);
+        update.setBorderPainted(false);
         add(update);
         
         back = new JButton("Back");
@@ -137,6 +139,8 @@ public class Add extends JFrame implements ActionListener{
         back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
+        back.setOpaque(true);
+        back.setBorderPainted(false);
         add(back);
         
         setSize(900, 700);

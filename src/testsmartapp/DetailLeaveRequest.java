@@ -130,6 +130,8 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
         back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
+        back.setOpaque(true);
+        back.setBorderPainted(false);
         add(back);
         
         approve = new JButton("Approve");
@@ -137,6 +139,8 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
         approve.addActionListener(this);
         approve.setBackground(Color.BLACK);
         approve.setForeground(Color.WHITE);
+        approve.setOpaque(true);
+        approve.setBorderPainted(false);
         add(approve);
         
         reject = new JButton("Reject");
@@ -144,6 +148,8 @@ public class DetailLeaveRequest extends JFrame implements ActionListener{
         reject.addActionListener(this);
         reject.setBackground(Color.BLACK);
         reject.setForeground(Color.WHITE);
+        reject.setOpaque(true);
+        reject.setBorderPainted(false);
         add(reject);
         
         setSize(900, 700);
