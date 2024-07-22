@@ -4,17 +4,24 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/ConnectionDB.java</file>
-            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/ViewProjects.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/ViewApprovalRequestProjectManager.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/HomeProjectManager.java</file>
             <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/Add.java</file>
             <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailLeaveRequest.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/AddLeaveRequestEmployee.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailEmployeeProjectManager.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/AddProjectProjectManager.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/Login.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailApprovalRequestProjectManager.java</file>
             <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailApprovalRequest.java</file>
             <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailProject.java</file>
-            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/ViewApprovalRequest.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailProjectEmployee.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/UpdateLeaveRequestEmployee.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailProjectProjectManager.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailLeaveRequestEmployee.java</file>
             <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/Update.java</file>
-            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/Home.java</file>
-            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/Login.java</file>
-            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/ViewEmployee.java</file>
-            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/ViewLeaveRequest.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/DetailApprovalRequestEmployee.java</file>
+            <file>file:/Users/nikitasakun/NetBeansProjects/TestSmartApp/src/testsmartapp/UpdateProjectProjectManager.java</file>
         </group>
     </open-files>
 </project-private>

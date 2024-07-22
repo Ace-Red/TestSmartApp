@@ -78,6 +78,8 @@ public class AddLeaveRequestEmployee extends JFrame implements ActionListener{
         add.addActionListener(this);
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
+        add.setOpaque(true);
+        add.setBorderPainted(false);
         add(add);
         
         back = new JButton("Back");
@@ -85,6 +87,8 @@ public class AddLeaveRequestEmployee extends JFrame implements ActionListener{
         back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
+        back.setOpaque(true);
+        back.setBorderPainted(false);
         add(back);
         
         setSize(900, 700);

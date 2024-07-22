@@ -134,6 +134,8 @@ public class DetailLeaveRequestEmployee extends JFrame implements ActionListener
         back.addActionListener(this);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
+        back.setOpaque(true);
+        back.setBorderPainted(false);
         add(back);
         
         setSize(900, 700);
