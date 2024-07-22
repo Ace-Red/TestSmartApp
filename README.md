@@ -1,6 +1,6 @@
 TestSmartApp
 
-Технології:
+**Технології:**
 
 - Programming Language: Java 22;
   
@@ -121,3 +121,59 @@ CREATE TABLE EmployeeProject (
 7) Також в таблиці Position важливо зробити такі записи, дотримуючись id та назви посад:
    
 <img width="272" alt="Снимок экрана 2024-07-10 в 17 25 30" src="https://github.com/Ace-Red/TestSmartApp/assets/54742708/8f7e1592-ef1c-4d3e-878f-70c4dac4b556">
+
+**Скріншоти та інструкція користувача:**
+
+Авторизація:
+
+<img width="1112" alt="Login" src="https://github.com/user-attachments/assets/521eca2d-1665-48cf-89a9-399f33cfa484">
+
+- Користувач повинен заповнити поля та натиснути кнопку "Login"
+
+**PM**
+
+1) Home page:
+
+<img width="1312" alt="Main Page pm" src="https://github.com/user-attachments/assets/6a1bf103-082b-45f3-ae9a-253b0854217e">
+
+- PM обирає, що саме він хоче обрати та натискає відповідну кнопку
+
+2) Інформація про співробітників:
+
+<img width="1112" alt="Employee List PM" src="https://github.com/user-attachments/assets/88975d8a-8252-4271-a5b7-6a75a525c69d">
+
+- PM може обрати бажаного співробітника та поставити його на певний проект, знайти запис про нього, побачити про нього детальну інформацію
+
+3) Детальна інформація про обраного співробітника:
+
+<img width="1012" alt="Detail Employee PM" src="https://github.com/user-attachments/assets/4a42af2d-28e2-4039-a6e4-7c01c21b2094">
+
+- PM може побачити детальну інформацію про співробітника
+
+4) Екран перегляду списку проектів:
+
+<img width="1112" alt="List Project PM" src="https://github.com/user-attachments/assets/f903062f-1fa9-45e1-8cf2-310143090675">
+
+- PM може побачити список своїх проектів та деактивувати їх, оновити певний або додати новий
+  
+5) Екран оновлення обраного проекту:
+   
+<img width="1012" alt="Update pr PM" src="https://github.com/user-attachments/assets/2138ed9b-d8c4-44f6-b68c-545575326c2d">
+
+6) Екран додавання нового проекту:
+
+<img width="1012" alt="Add project PM" src="https://github.com/user-attachments/assets/9e7e3907-67c9-4af7-b128-20e8618e5519">
+
+7) Перегляд списку approval requests:
+
+<img width="1112" alt="Approval r PM" src="https://github.com/user-attachments/assets/7b7a3a28-a606-4289-a53a-9d047f939cd5">
+
+- PM може побачити детальну інформацію про leave request співробітника його проекту, який він погодив
+
+<img width="1012" alt="Detail Appr r PM" src="https://github.com/user-attachments/assets/27cd34e3-dcce-4cd8-a8e1-693bb8c2db3f">
+
+8) Екран перегляду leave requests співробітників:
+
+<img width="1112" alt="Leave r PM" src="https://github.com/user-attachments/assets/cdec42c6-916c-45a6-a71e-7c843cc4206f">
+
+- (Дивитися розділ "HR" там є доступні записи та показаний увесь функціонал)
